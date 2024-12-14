@@ -1,0 +1,197 @@
+CSS selectors are patterns used to target and style specific HTML elements. Here are common types of selectors:
+Universal Selector, targets all the elements
+Type Selector: Targets elements by their tag name.
+class selector: selects element with specific class attribute 
+id selector: Targets an element by its unique id.
+Group Selector: Styles multiple selectors at once. 
+    h1,h2,h3{
+      background-color: aqua;
+    }
+Descendant Selector (ancestor descendant)
+•	Selects all nested elements inside the specified ancestor, no matter how deeply they are nested.
+•	Matches elements at any level of nesting.
+Example:
+html
+Copy code
+<div>
+  <ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+  </ul>
+</div>
+css
+Copy code
+div li {
+  color: red;
+}
+Result:
+All <li> elements inside <div> (even deeply nested ones) will have color: red.
+________________________________________
+2. Child Selector (parent > child)
+•	Selects only direct children of the specified parent.
+•	Matches elements at one level of nesting only.
+Example:
+html
+Copy code
+<div>
+  <ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <ol>
+      <li>Nested Item 1</li>
+    </ol>
+  </ul>
+</div>
+css
+Copy code
+div > ul > li {
+  color: blue;
+}
+Result:
+Only <li> elements that are direct children of <ul> will have color: blue. The nested <li> under <ol> will not be styled.
+________________________________________
+Key Difference:
+•	Descendant Selector: Matches all descendants (regardless of depth).
+•	Child Selector: Matches only direct children (one level deep).
+Adjacent Sibling Selector
+•	Targets an element immediately following another.
+h1 + p 
+{ font-style: italic; }
+
+General Sibling Selector
+Targets all siblings after an element.
+h1 ~ p { color: gray; }
+Attribute Selector
+Targets elements with specific attributes.
+input[type="text"] { border: 1px solid #000; }
+Pseudo-classes
+Styles elements based on their state or position.
+a:hover { color: green; }
+Pseudo-elements
+Styles parts of an element.
+p::first-line { font-weight: bold; }
+
+BOX-MODEL
+The CSS Box Model is a fundamental concept that describes how elements are structured and how their size is calculated in CSS. It consists of four main components that define the space around HTML elements:
+1. Content
+•	The innermost part of the box.
+•	It contains the actual content (e.g., text, images).
+•	Its size is defined by properties like width and height.
+2. Padding
+•	The space between the content and the border.
+•	It adds extra space inside the box, increasing its size.
+•	Controlled using the padding property (e.g., padding: 10px;).
+3. Border
+•	Surrounds the padding (if any) and content.
+•	Defines the boundary of the box.
+•	Controlled using properties like border-width, border-style, and border-color.
+4. Margin
+•	The outermost space around the element.
+•	It separates the element from other elements.
+•	Controlled using the margin property (e.g., margin: 20px;).
+The CSS Box Model is a fundamental concept that describes how elements are structured and how their size is calculated in CSS. It consists of four main components that define the space around HTML elements:
+1. Content
+•	The innermost part of the box.
+•	It contains the actual content (e.g., text, images).
+•	Its size is defined by properties like width and height.
+2. Padding
+•	The space between the content and the border.
+•	It adds extra space inside the box, increasing its size.
+•	Controlled using the padding property (e.g., padding: 10px;).
+3. Border
+•	Surrounds the padding (if any) and content.
+•	Defines the boundary of the box.
+•	Controlled using properties like border-width, border-style, and border-color.
+4. Margin
+•	The outermost space around the element.
+•	It separates the element from other elements.
+•	Controlled using the margin property (e.g., margin: 20px;).
+________________________________________
+Box Model Illustration:
+diff
+Copy code
++-------------------+
+|     Margin        |
++-------------------+
+|     Border        |
++-------------------+
+|     Padding       |
++-------------------+
+|     Content       |
++-------------------+
+________________________________________
+Total Width and Height
+The total size of an element (box) is calculated as:
+plaintext
+Copy code
+Total Width = Content Width + Padding Left + Padding Right + Border Left + Border Right + Margin Left + Margin Right
+Total Height = Content Height + Padding Top + Padding Bottom + Border Top + Border Bottom + Margin Top + Margin Bottom
+box-sizing Property
+By default, the total size includes content + padding + border, but you can modify this behavior using the box-sizing property:
+•	box-sizing: content-box (default): Size includes only the content; padding and border add to the total size.
+•	box-sizing: border-box: Size includes padding and border, keeping the total size fixed.
+How the Sizes are Calculated:
+1.	Content Box (box-sizing: content-box):
+o	The specified width (200px) and height (100px) refer only to the content.
+o	Total size includes padding and border added to the content dimensions:
+	Total Width: 200px (content) + 20px (left padding) + 20px (right padding) + 5px (left border) + 5px (right border) = 250px
+	Total Height: 100px (content) + 20px (top padding) + 20px (bottom padding) + 5px (top border) + 5px (bottom border) = 150px
+2.	Border Box (box-sizing: border-box):
+o	The specified width (200px) and height (100px) include the content, padding, and border.
+o	Padding and border are deducted from the content dimensions:
+	Content Width: 200px - 20px (left padding) - 20px (right padding) - 5px (left border) - 5px (right border) = 150px
+	Content Height: 100px - 20px (top padding) - 20px (bottom padding) - 5px (top border) - 5px (bottom border) = 50px
+CSS positioning is a key concept that controls how elements are placed in a layout. The position property defines the positioning method of an element and works in combination with properties like top, right, bottom, and left to fine-tune the placement.
+________________________________________
+Values of the position Property:
+1.	static (Default):
+o	The default positioning for all elements.
+o	Elements are positioned according to the normal document flow.
+o	The top, right, bottom, and left properties do not apply.
+css
+Copy code
+div {
+  position: static;
+}
+2.	relative:
+o	The element is positioned relative to its normal position.
+o	Use top, right, bottom, and left to "nudge" the element without affecting surrounding elements.
+css
+Copy code
+div {
+  position: relative;
+  top: 20px; /* Moves the element 20px down */
+  left: 10px; /* Moves the element 10px to the right */
+}
+3.	absolute:
+o	The element is positioned relative to the nearest positioned ancestor (an ancestor with position: relative, absolute, or fixed).
+o	If no such ancestor exists, it is positioned relative to the viewport.
+o	It is removed from the normal document flow, meaning it doesn't affect other elements.
+css
+Copy code
+div {
+  position: absolute;
+  top: 50px; /* Positioned 50px from the top of the nearest positioned ancestor */
+  left: 30px; /* Positioned 30px from the left */
+}
+4.	fixed:
+o	The element is positioned relative to the viewport and does not move when scrolling.
+o	Commonly used for sticky headers, footers, or buttons.
+css
+Copy code
+div {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+5.	sticky:
+o	The element toggles between relative and fixed, depending on the user's scroll position.
+o	It behaves like relative until a defined top, right, bottom, or left threshold is reached, at which point it acts like fixed.
+css
+Copy code
+div {
+  position: sticky;
+  top: 10px; /* Sticks to the top after scrolling 10px */
+}
+
+

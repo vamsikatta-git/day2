@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="css selectors box-model position">
+  <meta name="description" content="css basics">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* Universal Selector ,targets all the elements */
+    /* *{
+      background-color: grey; 
+    } */
+    /* div{  
+    Type Selector : Targets elements by their tag name.
+      background-color: red;
+    } */
+    /* class selector : selects element with specific class attribute */
+    .para{
+        color: blue;
+    }
+    .para1{
+      background-color: orange;
+    }
+    .para2{
+      text-decoration: underline;
+    }
+    /* id selector:Targets an element by its unique id. */
+    #newPara{
+      color: pink;
+    }
+    /* Group Selector : Styles multiple selectors at once. */
+    h1,h2,h3{
+      background-color: aqua;
+    }
+
+     /* Descendant selector: Targets elements inside a specific ancestor. */
+    /* div p { 
+      color: green;
+    } */
+     /* Child Selector: Targets direct children of an element. */
+
+     /* div li{  color applies to all the li in div despite of li not being a direct child 
+       color: blueviolet;
+     } */
+/* div>li{  color wont change because li is not a direct child of div
+  color:aqua;
+} */
+
+/* selects only li in ul and not in ol */
+
+div>ul>li{  
+  color: red;
+}
+button
+{
+  color: white;
+  background-color: black;
+  border: none;
+  padding: 10px;
+}
+/* Pseudo class */
+button:focus{
+  color: pink;
+}
+button:hover{
+  color: black;
+  background-color: white;
+}
+/* pseudo elements */
+
+a::after{
+  content: " ";
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background-image: url("./right-arrow.svg");
+  background-size: cover;
+  margin-left: 5px;
+  transition: width 1s,height 1s;
+}
+a:hover::after
+{
+  width: 20px;
+  height: 20px;
+}
+.content{
+  display: inline;
+  background-color: red;
+  padding: 10px;
+  border:4px solid black;
+  margin: 10px;
+}
+.content-box-example,.border-box-example {
+  margin: 10px;
+  padding: 20px;
+  border: 5px solid black;
+}
+
+.content-box-example {
+  box-sizing: content-box;
+  width: 200px;
+  height: 100px;
+  background-color: lightblue;
+}
+
+.border-box-example {
+  box-sizing: border-box;
+  width: 200px;
+  height: 100px;
+  background-color: lightgreen;
+}
+.position-div{
+  box-sizing: border-box;
+  background-color: red;
+  width:200px;
+  height: 200px;
+  position: relative;
+  margin: auto;
+}
+.position-div p{
+  display: inline;
+}
+.position-div p:first-child{
+  position: absolute;
+  top: 20px;
+  bottom: 0;
+}
+  </style>
+</head>
+<body>
+  <div>
+    Hello,Good evening!
+  </div>
+  <p>This is a para element</p>
+  <div>
+    This is a div element
+  </div>
+  <p class="para">
+    Paragraph with class selector 
+  </p>
+  <p class="para para1">
+    Paragraph with class selector 
+  </p>
+  <p class="para para1 para2">
+    Paragraph with class selector 
+  </p>
+  <p id="newPara">
+    This is an id selector
+  </p>
+
+  <h1>Heading 1</h1>
+  <h2>Heading 2</h2>
+  <h3>Heading 3</h3>
+  <div>
+    This is a parent div 
+    <p>Child para 1</p>
+    <p>Child para 2 <p>Selects this too</p> </p>
+    <p>Child para 3</p>
+  </div>
+  
+  <div>
+    <ul>
+      <li>This is a list item</li>
+    </ul>
+    <ol>
+      <li>This is an ordered li</li>
+    </ol>
+  </div>
+
+  <button>Click on Me!</button>
+  <button>Click on Me!</button>
+  <a href="https://google.com/">Google</a>
+
+  <div class="content">Content</div>
+
+  <div class="content-box-example">Content Box</div>
+<div class="border-box-example">Border Box</div>
+
+<div class="position-div">
+  <p>para1</p>
+  <p>para2</p>
+  <p>para3</p>
+  <p>para4</p>
+</div>
+</body>
+</html>
